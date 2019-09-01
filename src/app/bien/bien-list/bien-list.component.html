@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-title>Bienes</mat-card-title>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let bien of bienes">
+                <h3 mat-line [routerLink]="['/editar-bien', bien.id]">{{bien.nombre}}</h3>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <button mat-fab color="primary" [routerLink]="['/nuevo-bien']">Nuevo</button>
+</mat-card>

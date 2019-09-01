@@ -1,0 +1,87 @@
+<mat-card>
+  <form #bienForm="ngForm" (ngSubmit)="save(bienForm.value)">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{bien.nombre ? 'Editar' : 'Nuevo'}} Bien</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="hidden" name="id" [(ngModel)]="bien.id">
+      <mat-form-field>
+        <input matInput placeholder="Nombre" [(ngModel)]="bien.nombre" required name="nombre" #name>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Descripción" [(ngModel)]="bien.descripcion" required name="descripcion"
+          #name></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tipo de Bien</mat-label>
+        <select matNativeControl [(ngModel)]="bien.idTipo" name="idTipo" required>
+          <option value="0"></option>
+          <option *ngFor="let tipo of tiposBien" [value]="tipo.id">
+            {{tipo.label}}
+          </option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Serial" [(ngModel)]="bien.serial" required name="serial" #name>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput placeholder="Valor de compra" [(ngModel)]="bien.valorCompra" required
+          name="valorCompra" #name>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="date" matInput placeholder="Fecha de compra" [(ngModel)]="bien.fechaCompra" required
+          name="fechaCompra" #name>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Estado de Bien</mat-label>
+          <select matNativeControl [(ngModel)]="bien.idEstado" name="idEstado" required>
+            <option value="0"></option>
+            <option *ngFor="let estado of estadosBien" [value]="estado.id">
+              {{estado.label}}
+            </option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Asignar a</mat-label>
+            <select matNativeControl [(ngModel)]="tipoAsignacion" name="tipoAsignacion"  required>
+              <option value="0">Persona</option>
+              <option value="1">Área</option>
+            </select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="tipoAsignacion == 0">
+            <mat-label>Persona asignada</mat-label>
+            <select matNativeControl [(ngModel)]="bien.idPersonaAsignada" name="idPersonaAsignada">
+              <option value="0"></option>
+              <option *ngFor="let persona of listaPersonas" [value]="persona.id">
+                {{persona.label}}
+              </option>
+            </select>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="tipoAsignacion == 1">
+              <mat-label>Area asignada</mat-label>
+              <select matNativeControl [(ngModel)]="bien.idAreaAsignada" name="idAreaAsignada">
+                <option value="0"></option>
+                <option *ngFor="let area of listaAreas" [value]="area.id">
+                  {{area.label}}
+                </option>
+              </select>
+            </mat-form-field>
+    </mat-card-content>
+
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!bienForm.form.valid">Guardar</button>
+      <button mat-raised-button color="secondary" (click)="remove(bien.id)" *ngIf="bien.id"
+        type="button">Eliminar</button>
+      <a mat-button routerLink="/listar-bienes">Cancelar</a>
+    </mat-card-actions>
+    <mat-card-footer>
+      Footer
+    </mat-card-footer>
+  </form>
+</mat-card>
