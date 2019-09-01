@@ -14,14 +14,14 @@ import { AreaService } from 'src/app/area/area.service';
 })
 export class BienEditorComponent implements OnInit, OnDestroy {
 
-  bien: BienDTO = new BienDTO();
+  public bien: BienDTO = new BienDTO();
 
-  sub: Subscription;
-  tiposBien: Array<EntityRefDTO>;
-  estadosBien: Array<EntityRefDTO>;
-  listaPersonas:  Array<EntityRefDTO>;
-  listaAreas: Array<EntityRefDTO>;
-  tipoAsignacion = 0;
+  public sub: Subscription;
+  public tiposBien: Array<EntityRefDTO>;
+  public estadosBien: Array<EntityRefDTO>;
+  public listaPersonas:  Array<EntityRefDTO>;
+  public listaAreas: Array<EntityRefDTO>;
+  public tipoAsignacion = 0;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -63,18 +63,18 @@ export class BienEditorComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  gotoList() {
+  public gotoList() {
     this.router.navigate(['/listar-bienes']);
   }
 
-  save(data: any) {
+  public save(data: any) {
     var bien = data as BienDTO;
     this.bienService.save(bien).subscribe(result => {
       this.gotoList();
     }, this.handleError);
   }
 
-  remove(id) {
+  public remove(id) {
     this.bienService.remove(id).subscribe(result => {
       this.gotoList();
     }, this.handleError);

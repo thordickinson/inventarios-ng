@@ -8,7 +8,7 @@ import { BienService } from '../bien.service';
 })
 export class BienListComponent implements OnInit {
 
-  private bienes:Array<any>;
+  public bienes:Array<any>;
 
   constructor(private bienService: BienService) { }
 
