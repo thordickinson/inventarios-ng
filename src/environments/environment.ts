@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendServer: "http://127.0.0.1:8080"
+  backendServer: "http://127.0.0.1:8080/inventarios/api/1.0"
 };
 
 /*
