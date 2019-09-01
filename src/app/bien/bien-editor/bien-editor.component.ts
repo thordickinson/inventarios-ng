@@ -61,7 +61,7 @@ export class BienEditorComponent implements OnInit, OnDestroy {
     if(e.error && e.error.message){
       var fullmsg = e.error.message as string;
       if(fullmsg.indexOf("fechaCompra") > 0){
-        message = "La fecha de compra debe ser mayor a la fecha actual";
+        message = "La fecha de compra debe ser menor a la fecha actual";
       }
     }
     this.snackBar.open(message, null, {
