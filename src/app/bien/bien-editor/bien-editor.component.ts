@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BienService, BienDTO } from '../bien.service';
 import { Subscription } from 'rxjs';
@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { EntityRefDTO } from 'src/app/util/utils';
 import { PersonaService } from 'src/app/persona/persona.service';
 import { AreaService } from 'src/app/area/area.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'bien-editor',
@@ -27,13 +28,13 @@ export class BienEditorComponent implements OnInit, OnDestroy {
               private router: Router,
               private bienService: BienService, 
               private personaService:PersonaService, 
-              private areaService:AreaService) {
+              private areaService:AreaService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
     
-    this.bienService.getTiposBien().subscribe( t => this.tiposBien = t, this.handleError);
-    this.bienService.getEstadosBien().subscribe( t => this.estadosBien = t, this.handleError);
+    this.bienService.getTiposBien().subscribe( t => this.tiposBien = t, e => this.handleError(e));
+    this.bienService.getEstadosBien().subscribe( t => this.estadosBien = t, e => this.handleError(e));
 
     this.personaService.getAll().subscribe( p => this.listaPersonas = p, this.handleError);
     this.areaService.getAll().subscribe( a => this.listaAreas = a, this.handleError);
@@ -56,6 +57,16 @@ export class BienEditorComponent implements OnInit, OnDestroy {
 
 
   handleError(e):void{
+    var message = "Ocurrió un error";
+    if(e.error && e.error.message){
+      var fullmsg = e.error.message as string;
+      if(fullmsg.indexOf("fechaCompra") > 0){
+        message = "La fecha de compra debe ser mayor a la fecha actual";
+      }
+    }
+    this.snackBar.open(message, null, {
+      duration: 20000, panelClass: "error-snack-bar"
+    });
     console.log(e);
   }
 
@@ -71,12 +82,12 @@ export class BienEditorComponent implements OnInit, OnDestroy {
     var bien = data as BienDTO;
     this.bienService.save(bien).subscribe(result => {
       this.gotoList();
-    }, this.handleError);
+    }, e => this.handleError(e));
   }
 
   public remove(id) {
     this.bienService.remove(id).subscribe(result => {
       this.gotoList();
-    }, this.handleError);
+    }, e => this.handleError(e));
   }
 }

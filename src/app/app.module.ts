@@ -4,7 +4,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BienListComponent } from './bien/bien-list/bien-list.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule, MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule, MatSelectModule, MatIconModule, MatSidenavModule, MatSnackBarModule, MatChipsModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { BienEditorComponent } from './bien/bien-editor/bien-editor.component';
@@ -27,7 +27,10 @@ import { BienEditorComponent } from './bien/bien-editor/bien-editor.component';
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

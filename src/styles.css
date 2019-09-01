@@ -10,3 +10,8 @@ body {
 .mat-form-field {
   width: 100%;
 }
+
+.error-snack-bar {
+  background-color: rgb(204, 94, 94);
+  color: #FFFFFF;
+}

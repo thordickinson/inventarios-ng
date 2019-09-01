@@ -35,42 +35,42 @@
           name="fechaCompra" #name>
       </mat-form-field>
       <mat-form-field>
-          <mat-label>Estado de Bien</mat-label>
-          <select matNativeControl [(ngModel)]="bien.idEstado" name="idEstado" required>
-            <option value="0"></option>
-            <option *ngFor="let estado of estadosBien" [value]="estado.id">
-              {{estado.label}}
-            </option>
-          </select>
-        </mat-form-field>
+        <mat-label>Estado de Bien</mat-label>
+        <select matNativeControl [(ngModel)]="bien.idEstado" name="idEstado" required>
+          <option value="0"></option>
+          <option *ngFor="let estado of estadosBien" [value]="estado.id">
+            {{estado.label}}
+          </option>
+        </select>
+      </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Asignar a</mat-label>
-            <select matNativeControl [(ngModel)]="tipoAsignacion" name="tipoAsignacion"  required>
-              <option value="0">Persona</option>
-              <option value="1">Área</option>
-            </select>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Asignar a</mat-label>
+        <select matNativeControl [(ngModel)]="tipoAsignacion" name="tipoAsignacion" required>
+          <option value="0">Persona</option>
+          <option value="1">Área</option>
+        </select>
+      </mat-form-field>
 
-        <mat-form-field *ngIf="tipoAsignacion == 0">
-            <mat-label>Persona asignada</mat-label>
-            <select matNativeControl [(ngModel)]="bien.idPersonaAsignada" name="idPersonaAsignada">
-              <option value="0"></option>
-              <option *ngFor="let persona of listaPersonas" [value]="persona.id">
-                {{persona.label}}
-              </option>
-            </select>
-          </mat-form-field>
+      <mat-form-field *ngIf="tipoAsignacion == 0">
+        <mat-label>Persona asignada</mat-label>
+        <select matNativeControl [(ngModel)]="bien.idPersonaAsignada" name="idPersonaAsignada">
+          <option value="0"></option>
+          <option *ngFor="let persona of listaPersonas" [value]="persona.id">
+            {{persona.label}}
+          </option>
+        </select>
+      </mat-form-field>
 
-          <mat-form-field *ngIf="tipoAsignacion == 1">
-              <mat-label>Area asignada</mat-label>
-              <select matNativeControl [(ngModel)]="bien.idAreaAsignada" name="idAreaAsignada">
-                <option value="0"></option>
-                <option *ngFor="let area of listaAreas" [value]="area.id">
-                  {{area.label}}
-                </option>
-              </select>
-            </mat-form-field>
+      <mat-form-field *ngIf="tipoAsignacion == 1">
+        <mat-label>Area asignada</mat-label>
+        <select matNativeControl [(ngModel)]="bien.idAreaAsignada" name="idAreaAsignada">
+          <option value="0"></option>
+          <option *ngFor="let area of listaAreas" [value]="area.id">
+            {{area.label}}
+          </option>
+        </select>
+      </mat-form-field>
     </mat-card-content>
 
 
@@ -80,8 +80,6 @@
         type="button">Eliminar</button>
       <a mat-button routerLink="/listar-bienes">Cancelar</a>
     </mat-card-actions>
-    <mat-card-footer>
-      Footer
-    </mat-card-footer>
+
   </form>
 </mat-card>
