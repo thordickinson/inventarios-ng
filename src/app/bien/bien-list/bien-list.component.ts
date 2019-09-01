@@ -17,6 +17,7 @@ export class BienListComponent implements OnInit {
   }
 
   private handleError(e){
+    console.log(e);
   }
 
 }

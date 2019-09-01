@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendServer: "https://inventarios-ng.herokuapp.com"
+  backendServer: "https://inventarios-rest.herokuapp.com"
 };
