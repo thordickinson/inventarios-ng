@@ -1,6 +1,6 @@
 {
-  "name": "inventarios-ng",
-  "version": "0.0.0",
+  "name": "Inventarios",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
