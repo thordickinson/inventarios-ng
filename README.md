@@ -11,11 +11,11 @@ Antes de nada se debe actualizar el archivo environment.ts para modificar la rut
 
 Usar el siguiente comando para instalar las dependencias
 
-´´´npm install´´´
+`npm install`
 
 Luego se inicia el servidor con:
 
-´´´ng serve´´´
+`ng serve`
 
 ## Heroku
 
