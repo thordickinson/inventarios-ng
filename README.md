@@ -7,6 +7,8 @@ Se requiere node y npm para el funcionamiento y compilación
 
 ## Ambiente de  desarrollo
 
+Se require tener docker y docker compose en el equipo.
+
 Antes de nada se debe actualizar el archivo environment.ts para modificar la ruta del servidor de backend.
 
 Usar el siguiente comando para instalar las dependencias
